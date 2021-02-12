@@ -1,5 +1,5 @@
 <h1 align="center">DigiDoc</h1>
- A web based application which provides to you a seamless experience for your consultation with the doctor developed for SLAC 2020 Hackathon
+ A web based application which provides to you a seamless experience for your consultation with the doctor developed for Hackerearth Hack 2021 Hackathon
  
 <h1 align="center">Features Implemented</h1>
 
