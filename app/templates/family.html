@@ -1,0 +1,82 @@
+{% extends 'default.html' %} {% block body %} {% include
+'partials/navbar.html'%}
+<section class="hero is-primary is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column is-offset-1 landing-caption">
+          <h1 class="title is-1 is-bold is-spaced">Family</h1>
+          <h2 class="subtitle is-5">Hello there, {{ session["name"] }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section is-medium">
+  <div class="container">
+    <div class="title-wrapper has-text-centered">
+      <h2 class="title is-2">Family members</h2>
+      <div class="divider is-centered"></div>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="columns is-multiline is-align-items-stretch">
+        {% for member in members %}
+        <div class="column is-3">
+          <div class="box has-background-dark has-text-white">
+            <div class="has-text-centered">
+              <div class="icon-wrap is-icon-reveal">
+                <ion-icon name="person" size="large"></ion-icon>
+              </div>
+              <h4 class="is-size-3">{{ member["name"] }}</h4>
+              <p>
+                {% if member["status"] == "Threatened" %}
+                <span class="tag is-danger">Threatened</span>
+                {% else %}
+                <span class="tag is-success">Safe</span>
+                {% endif %}
+              </p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+        <div class="column is-3">
+            <div class="box has-background-dark has-text-white">
+              <div class="has-text-centered">
+                <div class="icon-wrap is-icon-reveal">
+                  <ion-icon name="add-circle-outline" size="large"></ion-icon>
+                </div>
+                <h4 class="is-size-4">Add member</h4>
+                <form action="" method="post">
+
+                <div class="field">
+                  <div class="control">
+                    {{ form.new_email() }}
+                  </div>
+                </div>
+
+                <div class="field">
+                  <div class="control">
+                    {{ form.submit(class_="button") }}
+                  </div>
+                  {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                  {% for message in messages %}
+                  <p class="help has-text-danger">{{ message }}</p>
+                  {% endfor %}
+                  </help>
+                  {% endif %}
+                  {% endwith %}
+              </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock body %}

@@ -1,0 +1,39 @@
+<nav class="navbar is-default is-transparent is-fixed-top no-shadow" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item has-text-weight-bold" href="/">
+                DigiDoc
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbar-menu" class="navbar-menu is-static">
+            <div class="navbar-end">
+                {% if session["name"] %}
+                <a href="{{ url_for('patient_dashboard') }}" class="navbar-item is-secondary">
+                    Dashboard
+                </a>
+                {% endif %}
+                <div class="navbar-item">
+                    {% if session["name"] %}
+                    <a class="button signup-button rounded secondary-btn raised" href="/logout">
+                        Logout
+                    </a>
+                    {% else %}
+                    <a class="button signup-button rounded secondary-btn raised" href="{{ url_for('login') }}">
+                        Login
+                    </a>
+                    <a class="button signup-button rounded primary-btn raised" href="{{ url_for('signup') }}">
+                        Sign up
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
